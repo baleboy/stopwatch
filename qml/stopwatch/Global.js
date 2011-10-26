@@ -19,3 +19,16 @@ along with Stopwatch.  If not, see <http://www.gnu.org/licenses/>.
 
 */
 var suspendTime = null
+
+function zeroPad(n) {
+
+    return (n < 10 ? "0" : "") + n
+
+}
+
+function toTime(msec) {
+    return (msec >= 36000 ? Math.floor(msec / 36000) + ':' : '') +
+                  zeroPad(Math.floor((msec % 36000) / 600)) + ':' +
+                  zeroPad(Math.floor((msec % 600) / 10)) + '.' +
+                  msec % 10
+}
