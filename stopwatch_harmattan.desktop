@@ -4,7 +4,7 @@ Version=1.0
 Type=Application
 Terminal=false
 Name=Stopwatch
-Exec=/usr/bin/single-instance /opt/stopwatch/bin/stopwatch
+Exec=/usr/bin/invoker --splash=/opt/stopwatch/images/splash.jpg --type=d -s /opt/stopwatch/bin/stopwatch
 Icon=/usr/share/icons/hicolor/80x80/apps/stopwatch80.png
 X-Window-Icon=
 X-HildonDesk-ShowInToolbar=true

@@ -1,14 +1,16 @@
 #include <QtGui/QApplication>
+#include <MDeclarativeCache>
+
 #include "qmlapplicationviewer.h"
 
-int main(int argc, char *argv[])
+Q_DECL_EXPORT int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+    QScopedPointer<QApplication> app(MDeclarativeCache::qApplication(argc, argv));
 
     QmlApplicationViewer viewer;
     viewer.setOrientation(QmlApplicationViewer::ScreenOrientationAuto);
     viewer.setMainQmlFile(QLatin1String("qml/stopwatch/main.qml"));
     viewer.showExpanded();
 
-    return app.exec();
+    return app->exec();
 }
