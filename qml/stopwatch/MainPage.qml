@@ -38,9 +38,10 @@ Page {
     Connections {
         target: platformWindow
         onVisibleChanged: if (!platformWindow.visible)
-                             stopwatch.suspend()
-                         else
-                             stopwatch.resume()
+                              stopwatch.suspend()
+                          else
+                              stopwatch.resume()
+
 
     }
 
@@ -84,8 +85,10 @@ Page {
             running = !running
             if (!running)
                 stopwatch.stop()
-            else
+            else {
+                Global.previousTime = new Date
                 stopwatch.start()
+            }
         }
     }
 
@@ -140,19 +143,12 @@ Page {
     Timer {
         function suspend() {
             if (mainPage.running) {
-                console.log("suspended")
-                Global.suspendTime = new Date
                 stopwatch.stop()
             }
         }
 
         function resume() {
             if (mainPage.running) {
-                var resumeTime = new Date
-                var delta = (resumeTime.getTime() - Global.suspendTime.getTime()) / 100 - 1
-                elapsed += delta
-                lapTime += delta
-                console.log("resumed")
                 stopwatch.start()
             }
         }
@@ -165,8 +161,11 @@ Page {
         triggeredOnStart: true
 
         onTriggered: {
-            elapsed++
-            lapTime++
+            var currentTime = new Date
+            var delta = (currentTime.getTime() - Global.previousTime.getTime())
+            Global.previousTime = currentTime
+            elapsed += delta
+            lapTime += delta
         }
     }
 

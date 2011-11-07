@@ -1,4 +1,5 @@
 #include <QtGui/QApplication>
+
 #ifndef QT_SIMULATOR
 #include <MDeclarativeCache>
 #endif
