@@ -13,7 +13,7 @@ ListView {
         id: root
 
         property string color: index === 0 ? "white" : "gray"
-        property int maxHeight: 70
+        property int maxHeight: 75
 
         width:  parent.width
         height: maxHeight
@@ -37,21 +37,21 @@ ListView {
         Row {
             MyLabel {
                 id: lapNumberLabel
-                width: 65
+                width: 60
                 text: lap + ":"
                 color: root.color
             }
 
             MyLabel {
                 id: totalTimeLabel
-                width: 140
+                width: 145
                 text: Global.toTime(totalTime)
                 color: root.color
             }
 
             MyLabel {
                 id: lapTimeLabel
-                width: 140
+                width: 145
                 text: Global.toTime(time)
                 color: root.color
             }
@@ -61,6 +61,7 @@ ListView {
                 width: 80
                 text: lap > 1 ? Global.toDelta(delta) : ""
                 color: root.color
+                font.pixelSize: 22
             }
 
         }

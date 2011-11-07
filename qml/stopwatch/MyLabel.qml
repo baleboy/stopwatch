@@ -3,6 +3,6 @@ import QtQuick 1.1
 Text {
     font {
         family: "Nokia Pure Text"
-        pixelSize: 32
+        pixelSize: 34
     }
 }

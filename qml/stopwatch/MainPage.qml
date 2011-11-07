@@ -124,6 +124,7 @@ Page {
             top: startButton.bottom
             topMargin: 50
             left: startButton.left
+            leftMargin: 10
             bottom: parent.bottom
         }
         width: parent.width
