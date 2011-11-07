@@ -27,8 +27,29 @@ function zeroPad(n) {
 }
 
 function toTime(msec) {
-    return (msec >= 36000 ? Math.floor(msec / 36000) + ':' : '') +
-                  zeroPad(Math.floor((msec % 36000) / 600)) + ':' +
-                  zeroPad(Math.floor((msec % 600) / 10)) + '.' +
-                  msec % 10
+
+    var mod = Math.abs(msec)
+    return (msec < 0 ? "-" : "") +
+            (mod >= 36000 ? Math.floor(mod / 36000) + ':' : '') +
+            zeroPad(Math.floor((mod % 36000) / 600)) + ':' +
+            zeroPad(Math.floor((mod % 600) / 10)) + '.' +
+            mod % 10
+}
+
+function toDelta(msec) {
+
+    var mod = Math.abs(msec)
+    var hours = Math.floor(mod / 36000)
+    var minutes = Math.floor((mod % 36000) / 600)
+    var seconds = Math.floor((mod % 600) / 10)
+    var mseconds = mod % 10
+
+    var result = msec < 0 ? "-" : "+"
+    if (hours > 0)
+        result += hours + ":"
+    if (minutes > 0)
+        result += (hours > 0 ? zeroPad(minutes) : minutes) + ":"
+    result += (minutes > 0 ? zeroPad(seconds) : seconds) + "." + mseconds
+
+    return result
 }

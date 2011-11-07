@@ -1,3 +1,11 @@
+stopwatch (1.6.0) unstable; urgency=low
+
+  * Update.
+
+
+ -- Francesco Balestrieri <bale@balenet.com>  Wed, 26 Oct 2011 10:36:11 +0300
+
+
 stopwatch (1.0.0) unstable; urgency=low
 
   * Initial Release.

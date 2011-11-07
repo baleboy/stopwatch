@@ -30,6 +30,8 @@ Page {
     property int elapsed: 0
     property int lapCount: 0
     property bool running: false
+    property int lapTime: 0
+    property int lapDelta: lapList.count > 0 ? lapTime - lapList.get(0).time : 0
 
     orientationLock: PageOrientation.LockPortrait
 
@@ -54,9 +56,11 @@ Page {
         id: timerText
         pixelSize: 90
         textColor: "white"
-        anchors.top: parent.top
-        anchors.topMargin: 50
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors {
+            top: parent.top
+            topMargin: 60
+            horizontalCenter: parent.horizontalCenter
+        }
 
         text: Global.toTime(elapsed)
     }
@@ -97,28 +101,33 @@ Page {
         onClicked: {
             if (stopwatch.running) {
                 lapCount++
-                lapList.insert(0, {"lap": lapCount, "time": elapsed})
+                lapList.insert(0, {"lap": lapCount, "time": lapTime,
+                                   "totalTime": elapsed, "delta": lapDelta})
+
+                lapTime = 0
             }
+
             else {
                 elapsed = 0
                 lapCount = 0
+                lapTime = 0
                 lapList.clear()
             }
         }
     }
 
     LapListView {
-        id: listView
+        id: lapListView
         model: lapList
 
         anchors {
             top: startButton.bottom
             topMargin: 50
+            left: startButton.left
             bottom: parent.bottom
         }
         width: parent.width
     }
-
 
     AboutButton {
         id: about
@@ -139,7 +148,9 @@ Page {
         function resume() {
             if (mainPage.running) {
                 var resumeTime = new Date
-                elapsed += (resumeTime.getTime() - Global.suspendTime.getTime()) / 100 - 1
+                var delta = (resumeTime.getTime() - Global.suspendTime.getTime()) / 100 - 1
+                elapsed += delta
+                lapTime += delta
                 console.log("resumed")
                 stopwatch.start()
             }
@@ -154,6 +165,7 @@ Page {
 
         onTriggered: {
             elapsed++
+            lapTime++
         }
     }
 

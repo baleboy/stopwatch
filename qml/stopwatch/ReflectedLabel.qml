@@ -41,7 +41,6 @@ Item {
     Text {
         id: mainLabel
         font.pixelSize: reflectedLabel.pixelSize
-        // font.bold
         style: Text.Sunken
     }
 
@@ -52,6 +51,7 @@ Item {
         text: mainLabel.text
         color: mainLabel.color
         font.bold: mainLabel.font.bold
+        font.family: mainLabel.font.family
         style: mainLabel.style
 
         transform: Rotation {
