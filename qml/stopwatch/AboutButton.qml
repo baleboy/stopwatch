@@ -59,7 +59,7 @@ Item {
         id: query
 
         icon: "images/stopwatch.png"
-        titleText: "Stopwatch 1.0"
+        titleText: "Stopwatch 1.1"
         message: "(c) 2011 Francesco Balestrieri\n\n"
                  + "bale@balenet.com\n\n"
                  + "Icon by Oliver Scholtz (schollidesign.deviantart.com)"

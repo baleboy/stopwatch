@@ -1,9 +1,10 @@
 stopwatch (1.6.0) unstable; urgency=low
 
-  * Update.
+  * Improved startup time
+  * Added lap time and lap deltas
+  * Fixed some issues with accuracy
 
-
- -- Francesco Balestrieri <bale@balenet.com>  Wed, 26 Oct 2011 10:36:11 +0300
+ -- Francesco Balestrieri <bale@balenet.com>  Tue, 8 Nov 2011 10:36:11 +0300
 
 
 stopwatch (1.0.0) unstable; urgency=low
