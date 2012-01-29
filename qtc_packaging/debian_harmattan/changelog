@@ -1,3 +1,12 @@
+stopwatch (1.7.0) unstable; urgency=low
+
+  * Using tabular font to prevent timer text from moving
+  * Updated icon and splash screen
+  * Screensaver can be disabled while timer is running
+
+ -- Francesco Balestrieri <bale@balenet.com>  Tue, 28 Jan 2012 23:43:11 +0300
+
+
 stopwatch (1.6.0) unstable; urgency=low
 
   * Improved startup time

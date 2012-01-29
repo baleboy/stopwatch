@@ -22,21 +22,28 @@ along with Stopwatch.  If not, see <http://www.gnu.org/licenses/>.
 import QtQuick 1.1
 import com.nokia.meego 1.0
 
-ToolItem {
+Item {
 
-    QueryDialog {
-        id: query
+    property alias checked: onOff.checked
+    property alias text: switchText.text
 
-        icon: "images/stopwatch.png"
-        titleText: "Stopwatch 1.2"
-        message: "(c) 2011 Francesco Balestrieri\n\n"
-                 + "bale@balenet.com\n\n"
-                 + "Icon by Oliver Scholtz (schollidesign.deviantart.com)"
-        acceptButtonText: "Send Feedback"
-        onAccepted: Qt.openUrlExternally("mailto:bale@balenet.com?subject=Feedback about Stopwatch 1.2")
-        rejectButtonText: "Close"
+    width: switchText.width + onOff.width + 8
+    height: onOff.height
+
+    Label {
+        id: switchText
+        anchors {
+            left: parent.left
+            verticalCenter: parent.verticalCenter
+        }
     }
 
-    iconSource: "images/info-button.png"
-    onClicked: query.open()
+    Switch {
+        id: onOff
+        anchors {
+            right: parent.right
+            verticalCenter: parent.verticalCenter
+        }
+    }
 }
+

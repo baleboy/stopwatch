@@ -21,6 +21,8 @@ along with Stopwatch.  If not, see <http://www.gnu.org/licenses/>.
 
 import QtQuick 1.1
 import com.nokia.meego 1.0
+import QtMobility.systeminfo 1.1
+
 import "Global.js" as Global
 
 Page {
@@ -34,6 +36,15 @@ Page {
     property int lapDelta: lapList.count > 0 ? lapTime - lapList.get(0).time : 0
 
     orientationLock: PageOrientation.LockPortrait
+
+    tools: StopwatchToolbar { id: myToolBar }
+
+    ScreenSaver {
+        id: screenSaverControl
+        screenSaverInhibited: myToolBar.switchChecked &&
+                              (mainPage.status === PageStatus.Active) &&
+                              stopwatch.running
+    }
 
     Connections {
         target: platformWindow
@@ -133,13 +144,6 @@ Page {
         width: parent.width
     }
 
-    AboutButton {
-        id: about
-        anchors.bottom: mainPage.bottom
-        anchors.right: mainPage.right
-        anchors.margins: 5
-    }
-
     Timer {
         function suspend() {
             if (mainPage.running) {
@@ -176,4 +180,6 @@ Page {
         PropertyChanges { target: startButton; text: "Stop" }
         PropertyChanges { target: clearButton; text: "Lap" }
     }
+
+    Component.onCompleted: theme.inverted = true
 }

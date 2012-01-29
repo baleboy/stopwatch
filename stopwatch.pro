@@ -23,8 +23,8 @@ symbian:TARGET.CAPABILITY += NetworkServices
 
 # If your application uses the Qt Mobility libraries, uncomment the following
 # lines and add the respective components to the MOBILITY variable.
-# CONFIG += mobility
-# MOBILITY += systeminfo
+CONFIG += mobility
+MOBILITY += systeminfo
 
 # Add dependency to symbian components
 # CONFIG += qtquickcomponents
@@ -44,6 +44,7 @@ OTHER_FILES += \
     qtc_packaging/debian_harmattan/control \
     qtc_packaging/debian_harmattan/compat \
     qtc_packaging/debian_harmattan/changelog
+
 
 
 
