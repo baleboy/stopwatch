@@ -42,6 +42,7 @@ Item {
         id: mainLabel
         font.pixelSize: reflectedLabel.pixelSize
         style: Text.Sunken
+        font.family: "Nokia Pure Text T"
     }
 
     Text {
